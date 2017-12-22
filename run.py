@@ -12,15 +12,23 @@ Options:
 
 """
 from docopt import docopt
-from github import Github
-#from git import repo
+import os
+
+def download_payload():
+    os.system("git clone https://github.com/simonsongirang/payload_library.git")
+
+def download_setup():
+    os.system("git clone https://github.com/simonsongirang/burpsetup.git")
 
 def createproject(pname):
+    os.mkdir("projects")
+    os.chdir("projects")
     os.mkdir(pname)
     os.chdir(pname)
     os.mkdir("screenshots")
     os.mkdir("logs")
     os.mkdir("report")
+    os.mkdir("documentation")
 
 #def downloadpayload():
 #    Repo.clone_from("https://github.com/simonsongirang/payload_library.git")
@@ -30,6 +38,10 @@ if __name__ == '__main__':
     payload=arguments['--payload']
     burp=arguments['--burp']
     project=arguments['--p']
-    print (payload)
-    print (burp)
-    print (project)
+    os.chdir("..")
+    if payload:
+        download_payload()
+    if burp:
+        download_setup()
+    if project != None:
+        createproject(project)
