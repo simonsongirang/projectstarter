@@ -21,14 +21,17 @@ def download_setup():
     os.system("git clone https://github.com/simonsongirang/burpsetup.git")
 
 def createproject(pname):
-    os.mkdir("projects")
+    if os.path.isdir("projects"):
+        os.mkdir("projects")
     os.chdir("projects")
-    os.mkdir(pname)
-    os.chdir(pname)
-    os.mkdir("screenshots")
-    os.mkdir("logs")
-    os.mkdir("report")
-    os.mkdir("documentation")
+
+    if os.path.isdir(pname):
+        os.mkdir(pname)
+        os.chdir(pname)
+        os.mkdir("screenshots")
+        os.mkdir("logs")
+        os.mkdir("report")
+        os.mkdir("documentation")
 
 #def downloadpayload():
 #    Repo.clone_from("https://github.com/simonsongirang/payload_library.git")
