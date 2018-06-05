@@ -21,11 +21,11 @@ def download_setup():
     os.system("git clone https://github.com/simonsongirang/burpsetup.git")
 
 def createproject(pname):
-    if os.path.isdir("projects"):
+    if !os.path.isdir("projects"):
         os.mkdir("projects")
     os.chdir("projects")
 
-    if os.path.isdir(pname):
+    if !os.path.isdir(pname):
         os.mkdir(pname)
         os.chdir(pname)
         os.mkdir("screenshots")
